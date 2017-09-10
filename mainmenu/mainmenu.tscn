@@ -1,0 +1,297 @@
+[gd_scene load_steps=22 format=1]
+
+[ext_resource path="res://mainmenu/mainmenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/bg/main_menu.png" type="Texture" id=2]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/icons/exit/exit.png" type="Texture" id=4]
+[ext_resource path="res://assets/icons/exit/exit-clicked.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/exit/exit-hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/icons/play/play.png" type="Texture" id=7]
+[ext_resource path="res://assets/icons/play/play-clicked.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons/play/play-hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/icons/settings/settings.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons/settings/settings-clicked.png" type="Texture" id=11]
+[ext_resource path="res://assets/icons/settings/settings-hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/icons/info/info.png" type="Texture" id=13]
+[ext_resource path="res://assets/icons/info/info-clicked.png" type="Texture" id=14]
+[ext_resource path="res://assets/icons/info/info-hover.png" type="Texture" id=15]
+[ext_resource path="res://mainmenu/settings.gd" type="Script" id=16]
+[ext_resource path="res://assets/icons/settings/settings-panel.png" type="Texture" id=17]
+[ext_resource path="res://assets/icons/settings/settings-tutup.png" type="Texture" id=18]
+[ext_resource path="res://assets/icons/settings/settings-tutup-clicked.png" type="Texture" id=19]
+[ext_resource path="res://assets/icons/settings/settings-tutup-hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/icons/settings/gambar_settings.png" type="Texture" id=21]
+
+[node name="menu" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1370.0
+margin/bottom = 760.0
+script/script = ExtResource( 1 )
+screen_move_speed = 500
+
+[node name="background" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="background"]
+
+transform/pos = Vector2( 685, 385 )
+transform/scale = Vector2( 0.713542, 0.712963 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="main" type="ReferenceFrame" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1370.0
+margin/bottom = 768.0
+
+[node name="Label" type="Label" parent="main"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 3 )
+margin/left = 50.0
+margin/top = 700.0
+margin/right = 423.0
+margin/bottom = 744.0
+text = "©  2017 Universitas Jember"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="buttons" type="Container" parent="main"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1370.0
+margin/bottom = 0.0
+
+[node name="exitButton" type="TextureButton" parent="main/buttons"]
+
+rect/scale = Vector2( 0.3, 0.3 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1270.0
+margin/top = 10.0
+margin/right = 1523.0
+margin/bottom = 262.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 5 )
+textures/hover = ExtResource( 6 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="playButton" type="TextureButton" parent="main/buttons"]
+
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 560.0
+margin/top = 380.0
+margin/right = 955.0
+margin/bottom = 774.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 7 )
+textures/pressed = ExtResource( 8 )
+textures/hover = ExtResource( 9 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="settings" type="TextureButton" parent="main/buttons"]
+
+rect/scale = Vector2( 0.3, 0.3 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1100.0
+margin/top = 630.0
+margin/right = 1495.0
+margin/bottom = 1024.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 10 )
+textures/pressed = ExtResource( 11 )
+textures/hover = ExtResource( 12 )
+params/resize_mode = 1
+params/stretch_mode = 1
+
+[node name="infoButton" type="TextureButton" parent="main/buttons"]
+
+rect/scale = Vector2( 0.3, 0.3 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1230.0
+margin/top = 630.0
+margin/right = 1625.0
+margin/bottom = 1024.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+textures/pressed = ExtResource( 14 )
+textures/hover = ExtResource( 15 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="settings" type="ReferenceFrame" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 770.0
+margin/right = 1366.0
+margin/bottom = 1538.0
+script/script = ExtResource( 16 )
+
+[node name="bg-settings" type="Sprite" parent="settings"]
+
+material/use_parent = true
+transform/pos = Vector2( 700, 380 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 17 )
+
+[node name="tutupButton" type="TextureButton" parent="settings"]
+
+rect/scale = Vector2( 0.6, 0.6 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 580.0
+margin/top = 556.0
+margin/right = 947.0
+margin/bottom = 738.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 18 )
+textures/pressed = ExtResource( 19 )
+textures/hover = ExtResource( 20 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="allsettingslabel" type="Sprite" parent="settings"]
+
+transform/pos = Vector2( 590, 400 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 21 )
+
+[node name="setting-items" type="VBoxContainer" parent="settings"]
+
+material/use_parent = true
+anchor/right = 1
+anchor/bottom = 1
+rect/min_size = Vector2( 10, 10 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 890.0
+margin/top = 294.0
+margin/right = 387.0
+margin/bottom = 264.0
+custom_constants/separation = 27
+alignment = 0
+
+[node name="fullscreen" type="CheckButton" parent="settings/setting-items"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 89.0
+margin/bottom = 52.0
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+align = 0
+
+[node name="musics" type="CheckButton" parent="settings/setting-items"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 0.0
+margin/top = 79.0
+margin/right = 89.0
+margin/bottom = 131.0
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+align = 0
+
+[node name="soundeffect" type="CheckButton" parent="settings/setting-items"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 3 )
+margin/left = 0.0
+margin/top = 158.0
+margin/right = 89.0
+margin/bottom = 210.0
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+align = 0
+
+[node name="tween" type="Tween" parent="."]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+
