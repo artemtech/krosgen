@@ -17,7 +17,7 @@ func _ready():
 			if components.get_name() == "exitButton" :
 				components.connect("pressed", self, "_exitAction")
 			else:
-				print(components.get_name())
+				#print(components.get_name())
 				components.connect("pressed", self, "_targets", [components.get_name()])
 	
 	for node in get_children():

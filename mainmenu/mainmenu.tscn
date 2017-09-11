@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://mainmenu/mainmenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg/main_menu.png" type="Texture" id=2]
@@ -21,7 +21,28 @@
 [ext_resource path="res://assets/icons/settings/settings-tutup-clicked.png" type="Texture" id=19]
 [ext_resource path="res://assets/icons/settings/settings-tutup-hover.png" type="Texture" id=20]
 [ext_resource path="res://assets/icons/settings/gambar_settings.png" type="Texture" id=21]
-[ext_resource path="res://assets/info/info-bg.png" type="Texture" id=22]
+[ext_resource path="res://mainmenu/info.gd" type="Script" id=22]
+[ext_resource path="res://assets/info/info-bg.png" type="Texture" id=23]
+[ext_resource path="res://assets/info/info.png" type="Texture" id=24]
+[ext_resource path="res://assets/icons/info/arrow.png" type="Texture" id=25]
+[ext_resource path="res://assets/icons/info/arrow-clicked.png" type="Texture" id=26]
+[ext_resource path="res://assets/icons/info/arrow-hover.png" type="Texture" id=27]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 7
+image = Image()
+size = Vector2( 0, 0 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="ImageTexture" id=2]
+
+flags = 7
+image = Image()
+size = Vector2( 0, 0 )
+storage = 0
+lossy_quality = 0.7
 
 [node name="menu" type="Control"]
 
@@ -53,7 +74,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="main" type="ReferenceFrame" parent="."]
 
-editor/display_folded = true
+process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -177,6 +198,7 @@ params/stretch_mode = 0
 
 [node name="settings" type="ReferenceFrame" parent="."]
 
+process/pause_mode = 2
 editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -291,7 +313,7 @@ align = 0
 
 [node name="info" type="ReferenceFrame" parent="."]
 
-editor/display_folded = true
+process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -300,28 +322,89 @@ margin/left = 0.0
 margin/top = 770.0
 margin/right = 1366.0
 margin/bottom = 1538.0
+script/script = ExtResource( 22 )
+screen_move_speed = 350
 
 [node name="bg" type="Sprite" parent="info"]
 
 transform/pos = Vector2( 683, 384 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
+
+[node name="konten" type="Sprite" parent="info"]
+
+transform/pos = Vector2( 680, 380 )
+texture = ExtResource( 24 )
+region = true
+region_rect = Rect2( 2000, 0, 1000, 441 )
 
 [node name="tutupButton" type="TextureButton" parent="info"]
 
+rect/rotation = 7.94329e-07
+rect/scale = Vector2( 0.6, 0.6 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 575.0
-margin/top = 473.0
-margin/right = 840.0
-margin/bottom = 731.0
+margin/left = 1160.0
+margin/top = 30.0
+margin/right = 1425.0
+margin/bottom = 288.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
 textures/pressed = ExtResource( 5 )
 textures/hover = ExtResource( 6 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="prev" type="TextureButton" parent="info"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/rotation = 90.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 173.0
+margin/top = -332.0
+margin/right = 77.0
+margin/bottom = -428.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 25 )
+textures/pressed = ExtResource( 26 )
+textures/hover = ExtResource( 27 )
+textures/disabled = SubResource( 1 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="next" type="TextureButton" parent="info"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/rotation = -90.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -143.0
+margin/top = -236.0
+margin/right = -239.0
+margin/bottom = -332.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 25 )
+textures/pressed = ExtResource( 26 )
+textures/hover = ExtResource( 27 )
+textures/disabled = SubResource( 2 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
