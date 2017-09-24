@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://assets/levels/bgpng.tex" type="Texture" id=1]
+[ext_resource path="res://level/enemy.tscn" type="PackedScene" id=2]
+
+[node name="game" type="Node"]
+
+[node name="env" type="Node2D" parent="."]
+
+[node name="bg" type="Sprite" parent="env"]
+
+transform/pos = Vector2( 640, 360 )
+z/z = -1
+z/relative = false
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1280, 720 )
+
+[node name="enemy" parent="env" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 560.768, 509.166 )
+
+
