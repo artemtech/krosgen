@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://assets/levels/cursor.tex" type="Texture" id=1]
+[ext_resource path="res://level/cursor.gd" type="Script" id=2]
+
+[node name="cursor" type="Sprite"]
+
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+
