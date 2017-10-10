@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://level/level1/bakteri1.gd" type="Script" id=1]
+[ext_resource path="res://assets/levels/level1/bakteri1.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 19.731, 13.5946, 0.872452, 61.7654, -106.295, 73.3038, -63.2882, -25.1225, -14.1035, -28.8643 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 5.79916, -75.3038, 109.293, -86.5819, 69.4875, 8.28719, 19.731, 13.5946, -14.1035, -28.8643 )
+
+[node name="bakteri1" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -63.2882, -25.1225, -106.295, 73.3038, 0.872452, 61.7654, 19.731, 13.5946, 69.4875, 8.28719, 109.293, -86.5819, 5.79916, -75.3038, -14.1035, -28.8643 )
+shape_range = Vector2( 0, 1 )
+trigger = false
+
+

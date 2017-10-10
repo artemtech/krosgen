@@ -7,6 +7,6 @@ func _ready():
 	set_fixed_process(true);
 
 func _fixed_process(delta):
-	move(Vector2(1,0)*speedGerak*delta);
-	degPutar= fmod(degPutar+90 * delta,360);
-	print(degPutar);
+	move(Vector2(0,-1)*speedGerak*delta);
+	degPutar= fmod(degPutar+180 * delta,360);
+	#print(degPutar);
