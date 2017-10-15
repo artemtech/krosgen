@@ -29,6 +29,12 @@ func set_pengaturan(setting, value):
 		OS.set_window_fullscreen(value)
 		settings.get_node(setting).set_pressed(value)
 	elif setting == "musics":
+		var bool_music = bool(int(value))
 		settings.get_node(setting).set_pressed(value)
+		var music_node = get_node("../musics")
+		if bool_music:
+			music_node.play()
+		else:
+			music_node.stop()
 	else:
 		settings.get_node(setting).set_pressed(value)

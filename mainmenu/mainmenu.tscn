@@ -1,34 +1,56 @@
-[gd_scene load_steps=30 format=1]
+[gd_scene load_steps=36 format=1]
 
 [ext_resource path="res://mainmenu/mainmenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg/main_menu.png" type="Texture" id=2]
-[ext_resource path="res://assets/theme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/icons/exit/exit.png" type="Texture" id=4]
-[ext_resource path="res://assets/icons/exit/exit-clicked.png" type="Texture" id=5]
-[ext_resource path="res://assets/icons/exit/exit-hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/icons/play/play.png" type="Texture" id=7]
-[ext_resource path="res://assets/icons/play/play-clicked.png" type="Texture" id=8]
-[ext_resource path="res://assets/icons/play/play-hover.png" type="Texture" id=9]
-[ext_resource path="res://assets/icons/settings/settings.png" type="Texture" id=10]
-[ext_resource path="res://assets/icons/settings/settings-clicked.png" type="Texture" id=11]
-[ext_resource path="res://assets/icons/settings/settings-hover.png" type="Texture" id=12]
-[ext_resource path="res://assets/icons/info/info.png" type="Texture" id=13]
-[ext_resource path="res://assets/icons/info/info-clicked.png" type="Texture" id=14]
-[ext_resource path="res://assets/icons/info/info-hover.png" type="Texture" id=15]
-[ext_resource path="res://mainmenu/settings.gd" type="Script" id=16]
-[ext_resource path="res://assets/icons/settings/settings-panel.png" type="Texture" id=17]
-[ext_resource path="res://assets/icons/settings/settings-tutup.png" type="Texture" id=18]
-[ext_resource path="res://assets/icons/settings/settings-tutup-clicked.png" type="Texture" id=19]
-[ext_resource path="res://assets/icons/settings/settings-tutup-hover.png" type="Texture" id=20]
-[ext_resource path="res://assets/icons/settings/gambar_settings.png" type="Texture" id=21]
-[ext_resource path="res://mainmenu/info.gd" type="Script" id=22]
-[ext_resource path="res://assets/info/info-bg.png" type="Texture" id=23]
-[ext_resource path="res://assets/info/info.png" type="Texture" id=24]
-[ext_resource path="res://assets/icons/info/arrow.png" type="Texture" id=25]
-[ext_resource path="res://assets/icons/info/arrow-clicked.png" type="Texture" id=26]
-[ext_resource path="res://assets/icons/info/arrow-hover.png" type="Texture" id=27]
+[ext_resource path="res://assets/bg/awan.png" type="Texture" id=3]
+[ext_resource path="res://assets/bg/omah.png" type="Texture" id=4]
+[ext_resource path="res://assets/bg/tebunya.png" type="Texture" id=5]
+[ext_resource path="res://assets/bg/logo.png" type="Texture" id=6]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/icons/exit/exit.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons/exit/exit-clicked.png" type="Texture" id=9]
+[ext_resource path="res://assets/icons/exit/exit-hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons/play/play.png" type="Texture" id=11]
+[ext_resource path="res://assets/icons/play/play-clicked.png" type="Texture" id=12]
+[ext_resource path="res://assets/icons/play/play-hover.png" type="Texture" id=13]
+[ext_resource path="res://assets/icons/settings/settings.png" type="Texture" id=14]
+[ext_resource path="res://assets/icons/settings/settings-clicked.png" type="Texture" id=15]
+[ext_resource path="res://assets/icons/settings/settings-hover.png" type="Texture" id=16]
+[ext_resource path="res://assets/icons/info/info.png" type="Texture" id=17]
+[ext_resource path="res://assets/icons/info/info-clicked.png" type="Texture" id=18]
+[ext_resource path="res://assets/icons/info/info-hover.png" type="Texture" id=19]
+[ext_resource path="res://mainmenu/settings.gd" type="Script" id=20]
+[ext_resource path="res://assets/icons/settings/settings-panel.png" type="Texture" id=21]
+[ext_resource path="res://assets/icons/settings/settings-tutup.png" type="Texture" id=22]
+[ext_resource path="res://assets/icons/settings/settings-tutup-clicked.png" type="Texture" id=23]
+[ext_resource path="res://assets/icons/settings/settings-tutup-hover.png" type="Texture" id=24]
+[ext_resource path="res://assets/icons/settings/gambar_settings.png" type="Texture" id=25]
+[ext_resource path="res://mainmenu/info.gd" type="Script" id=26]
+[ext_resource path="res://assets/info/info-bg.png" type="Texture" id=27]
+[ext_resource path="res://assets/info/info.png" type="Texture" id=28]
+[ext_resource path="res://assets/icons/info/arrow.png" type="Texture" id=29]
+[ext_resource path="res://assets/icons/info/arrow-clicked.png" type="Texture" id=30]
+[ext_resource path="res://assets/icons/info/arrow-hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/bgm/peaceful day.ogg" type="AudioStream" id=32]
 
-[sub_resource type="ImageTexture" id=1]
+[sub_resource type="Animation" id=1]
+
+resource/name = "awan"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 8 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 1280, 720 ), Rect2( 1280, 0, 1280, 720 ) ]
+}
+
+[sub_resource type="ImageTexture" id=2]
 
 flags = 7
 image = Image()
@@ -36,7 +58,7 @@ size = Vector2( 0, 0 )
 storage = 0
 lossy_quality = 0.7
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=3]
 
 flags = 7
 image = Image()
@@ -59,6 +81,7 @@ screen_move_speed = 1500
 
 [node name="background" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -66,23 +89,62 @@ scale = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="background"]
 
-transform/pos = Vector2( 685, 385 )
-transform/scale = Vector2( 0.713542, 0.712963 )
+transform/pos = Vector2( 640.815, 360.166 )
+transform/scale = Vector2( 0.667515, 0.666974 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
+[node name="awan" type="Sprite" parent="background"]
+
+editor/display_folded = true
+visibility/opacity = 0.6
+transform/pos = Vector2( 640, 360 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 960, 0, 1280, 720 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/awan"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/awan = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "awan"
+
+[node name="omah" type="Sprite" parent="background"]
+
+transform/pos = Vector2( 195.375, 380.577 )
+transform/scale = Vector2( 0.672309, 0.672309 )
+texture = ExtResource( 4 )
+
+[node name="tebu" type="Sprite" parent="background"]
+
+transform/pos = Vector2( 635, 434 )
+texture = ExtResource( 5 )
+vframes = 3
+
+[node name="logo" type="Sprite" parent="background"]
+
+transform/pos = Vector2( 620, 280 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 6 )
+
 [node name="main" type="ReferenceFrame" parent="."]
 
 process/pause_mode = 2
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1370.0
-margin/bottom = 768.0
+margin/right = 1280.0
+margin/bottom = 720.0
 
 [node name="Label" type="Label" parent="main"]
 
@@ -90,11 +152,11 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 50.0
-margin/top = 700.0
-margin/right = 423.0
-margin/bottom = 744.0
+theme/theme = ExtResource( 7 )
+margin/left = 36.0
+margin/top = 667.0
+margin/right = 409.0
+margin/bottom = 711.0
 text = "©  2017 Universitas Jember"
 percent_visible = 1.0
 lines_skipped = 0
@@ -119,19 +181,19 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1270.0
-margin/top = 10.0
-margin/right = 1523.0
-margin/bottom = 262.0
+margin/left = 1175.0
+margin/top = 18.0
+margin/right = 1428.0
+margin/bottom = 270.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 4 )
-textures/pressed = ExtResource( 5 )
-textures/hover = ExtResource( 6 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
 params/resize_mode = 0
-params/stretch_mode = 0
+params/stretch_mode = 3
 
 [node name="playButton" type="TextureButton" parent="main/buttons"]
 
@@ -140,18 +202,19 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 560.0
-margin/top = 380.0
-margin/right = 955.0
-margin/bottom = 774.0
+margin/left = 538.0
+margin/top = 489.0
+margin/right = 775.0
+margin/bottom = 725.4
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
-textures/pressed = ExtResource( 8 )
-textures/hover = ExtResource( 9 )
+textures/normal = ExtResource( 11 )
+textures/pressed = ExtResource( 12 )
+textures/hover = ExtResource( 13 )
 params/resize_mode = 0
+params/scale = Vector2( 0.6, 0.6 )
 params/stretch_mode = 0
 
 [node name="settings" type="TextureButton" parent="main/buttons"]
@@ -161,19 +224,19 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1100.0
-margin/top = 630.0
-margin/right = 1495.0
-margin/bottom = 1024.0
+margin/left = 1019.0
+margin/top = 588.0
+margin/right = 1414.0
+margin/bottom = 982.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 10 )
-textures/pressed = ExtResource( 11 )
-textures/hover = ExtResource( 12 )
+textures/normal = ExtResource( 14 )
+textures/pressed = ExtResource( 15 )
+textures/hover = ExtResource( 16 )
 params/resize_mode = 1
-params/stretch_mode = 1
+params/stretch_mode = 3
 
 [node name="info" type="TextureButton" parent="main/buttons"]
 
@@ -182,17 +245,17 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1230.0
-margin/top = 630.0
-margin/right = 1625.0
-margin/bottom = 1024.0
+margin/left = 1146.0
+margin/top = 591.0
+margin/right = 1541.0
+margin/bottom = 985.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 13 )
-textures/pressed = ExtResource( 14 )
-textures/hover = ExtResource( 15 )
+textures/normal = ExtResource( 17 )
+textures/pressed = ExtResource( 18 )
+textures/hover = ExtResource( 19 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -205,17 +268,17 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 770.0
+margin/top = 720.0
 margin/right = 0.0
-margin/bottom = 1538.0
-script/script = ExtResource( 16 )
+margin/bottom = 1488.0
+script/script = ExtResource( 20 )
 
 [node name="bg-settings" type="Sprite" parent="settings"]
 
 material/use_parent = true
 transform/pos = Vector2( 700, 380 )
 transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 17 )
+texture = ExtResource( 21 )
 
 [node name="tutupButton" type="TextureButton" parent="settings"]
 
@@ -231,9 +294,9 @@ margin/bottom = 738.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 18 )
-textures/pressed = ExtResource( 19 )
-textures/hover = ExtResource( 20 )
+textures/normal = ExtResource( 22 )
+textures/pressed = ExtResource( 23 )
+textures/hover = ExtResource( 24 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -241,10 +304,11 @@ params/stretch_mode = 0
 
 transform/pos = Vector2( 590, 400 )
 transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 21 )
+texture = ExtResource( 25 )
 
 [node name="setting-items" type="VBoxContainer" parent="settings"]
 
+editor/display_folded = true
 material/use_parent = true
 anchor/right = 1
 anchor/bottom = 1
@@ -266,7 +330,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 3 )
+theme/theme = ExtResource( 7 )
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 76.0
@@ -283,7 +347,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 3 )
+theme/theme = ExtResource( 7 )
 margin/left = 0.0
 margin/top = 79.0
 margin/right = 76.0
@@ -300,7 +364,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 3 )
+theme/theme = ExtResource( 7 )
 margin/left = 0.0
 margin/top = 158.0
 margin/right = 76.0
@@ -319,21 +383,22 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 770.0
-margin/right = 1366.0
-margin/bottom = 1538.0
-script/script = ExtResource( 22 )
+margin/top = 720.0
+margin/right = 1280.0
+margin/bottom = 1440.0
+script/script = ExtResource( 26 )
 screen_move_speed = 350
 
 [node name="bg" type="Sprite" parent="info"]
 
-transform/pos = Vector2( 683, 384 )
-texture = ExtResource( 23 )
+transform/pos = Vector2( 640, 359.824 )
+transform/scale = Vector2( 0.937042, 0.937042 )
+texture = ExtResource( 27 )
 
 [node name="konten" type="Sprite" parent="info"]
 
-transform/pos = Vector2( 680, 380 )
-texture = ExtResource( 24 )
+transform/pos = Vector2( 650, 360 )
+texture = ExtResource( 28 )
 region = true
 region_rect = Rect2( 2000, 0, 1000, 441 )
 
@@ -345,16 +410,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1160.0
+margin/left = 1090.0
 margin/top = 30.0
-margin/right = 1425.0
+margin/right = 1355.0
 margin/bottom = 288.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 4 )
-textures/pressed = ExtResource( 5 )
-textures/hover = ExtResource( 6 )
+textures/normal = ExtResource( 8 )
+textures/pressed = ExtResource( 9 )
+textures/hover = ExtResource( 10 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -376,10 +441,10 @@ margin/bottom = -428.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 25 )
-textures/pressed = ExtResource( 26 )
-textures/hover = ExtResource( 27 )
-textures/disabled = SubResource( 1 )
+textures/normal = ExtResource( 29 )
+textures/pressed = ExtResource( 30 )
+textures/hover = ExtResource( 31 )
+textures/disabled = SubResource( 2 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
@@ -394,19 +459,30 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -143.0
-margin/top = -236.0
-margin/right = -239.0
-margin/bottom = -332.0
+margin/left = -156.0
+margin/top = -230.0
+margin/right = -252.0
+margin/bottom = -326.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 25 )
-textures/pressed = ExtResource( 26 )
-textures/hover = ExtResource( 27 )
-textures/disabled = SubResource( 2 )
+textures/normal = ExtResource( 29 )
+textures/pressed = ExtResource( 30 )
+textures/hover = ExtResource( 31 )
+textures/disabled = SubResource( 3 )
 params/resize_mode = 0
 params/stretch_mode = 0
+
+[node name="musics" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 32 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [node name="tween" type="Tween" parent="."]
 
@@ -414,5 +490,9 @@ playback/process_mode = 1
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[connection signal="pressed" from="settings/tutupButton" to="." method="_on_tutupButton_pressed"]
+
+[connection signal="pressed" from="info/tutupButton" to="." method="_on_tutupButton_pressed"]
 
 

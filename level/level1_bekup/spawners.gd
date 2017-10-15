@@ -46,12 +46,11 @@ func spawn():
 	counts -= 1;
 	add_child(spawnObjects);
 	
-	
 # lakukan pengecekan untuk setiap objek yang belum di drag/drop
 func checkPicked(objects):
 	for eachChild in objects:
 		if eachChild.get_type() == "KinematicBody2D":
-			if eachChild.isPicked(): #method is_picked diambil dari script blocks.gd
+			if eachChild.is_picked(): #method is_picked diambil dari script blocks.gd
 				isPicked = true;
 				pickedObjects = eachChild;
 

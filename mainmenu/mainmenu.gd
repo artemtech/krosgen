@@ -26,12 +26,11 @@ func _ready():
 
 func _targets(var screen = "start"):
 	current_screen = screen
-	
 	var target_coordinates = Vector2(0, 0) # By default, use the 0, 0 coordinates
 	if has_node(screen):
 		target_coordinates = get_node(screen).get_pos() # If possible, use the coordinates of the target
+		print("screen saat ini: ",get_node(screen).get_name())
 		get_node(screen).set_hidden(false)
-	
 	var current_coordinates = get_pos()
 	var distance = current_coordinates.distance_to(target_coordinates)
 	var time = distance/screen_move_speed
@@ -43,3 +42,9 @@ func _targets(var screen = "start"):
 
 func _exitAction():
 	get_tree().quit()
+
+func _on_tutupButton_pressed():
+	if current_screen == "settings":
+		pengaturan.set_hidden(true)
+	elif current_screen == "info":
+		informasi.set_hidden(true)

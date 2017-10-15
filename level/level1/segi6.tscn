@@ -3,19 +3,8 @@
 [ext_resource path="res://level/level1/blocks.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/level1/segi6.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="Animation" id=1]
 
-custom_solver_bias = 0.0
-points = Vector2Array( -9.57492, 6.9774, -9.57492, -7.00991, -0.276434, -13.2899, 9.76003, -6.58174, 9.76003, 6.69194, 0.166352, 13.5429 )
-
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 56.1993, 52.6134 )
-
-[sub_resource type="Animation" id=2]
-
-resource/name = "unyu"
 length = 1.0
 loop = true
 step = 0.1
@@ -30,52 +19,80 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 16.5759
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 64, 64 )
+
 [node name="segi6" type="KinematicBody2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( -1.60032e-07, 3.6611, -3.78595, -1.65489e-07, 0.0228481, 0.528027 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 4 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 0.0228481, 0.528027 )
-shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-speedGerak = 60
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="segi6" type="Sprite" parent="."]
 
 editor/display_folded = true
 texture = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="segi6"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/unyu = SubResource( 2 )
+anims/unyu = SubResource( 1 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "unyu"
 
-[node name="innerCollision" type="CollisionPolygon2D" parent="."]
+[node name="innerCollision" type="Area2D" parent="."]
 
-transform/pos = Vector2( 0.0228481, 0.528027 )
-transform/rot = -90.0
-transform/scale = Vector2( 3.6611, 3.78595 )
-build_mode = 0
-polygon = Vector2Array( -9.57492, 6.9774, -9.57492, -7.00991, -0.276434, -13.2899, 9.76003, -6.58174, 9.76003, 6.69194, 0.166352, 13.5429 )
-shape_range = Vector2( 0, 0 )
-trigger = false
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 4096
+collision/mask = 4096
 
-[node name="outerCollision" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="innerCollision"]
 
-transform/pos = Vector2( 0.0228481, 0.528027 )
 shape = SubResource( 4 )
 trigger = false
-_update_shape_index = 1
+_update_shape_index = 0
+
+[node name="outerCollision" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="outerCollision"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="innerCollision" to="." method="_on_innerCollision_area_enter"]
+
+[connection signal="input_event" from="innerCollision" to="." method="_on_innerCollision_input_event"]
+
+[connection signal="input_event" from="outerCollision" to="." method="_on_outerCollision_input_event"]
 
 

@@ -18,7 +18,8 @@ func load_level(pack, level):
 func _set_level(pack, level):
 	var current_scene = get_tree().get_current_scene()
 	if current_scene.has_node("level_holder"):
-		current_scene.get_node("level_holder").load_level(pack, level)
+		pass
+#		current_scene.get_node("level_holder").load_level(pack, level)
 	else:
 		call_deferred("_set_level", pack, level)
 	
