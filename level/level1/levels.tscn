@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=1]
 
-[ext_resource path="res://level/level1/level1.gd" type="Script" id=1]
-[ext_resource path="res://assets/levels/level1/bg2.png" type="Texture" id=2]
-[ext_resource path="res://assets/levels/level1/eskalator2.png" type="Texture" id=3]
-[ext_resource path="res://level/level1/collisions_end.gd" type="Script" id=4]
+[ext_resource path="res://assets/levels/level1/bg2.png" type="Texture" id=1]
+[ext_resource path="res://assets/levels/level1/eskalator2.png" type="Texture" id=2]
+[ext_resource path="res://level/level1/collisions_end.gd" type="Script" id=3]
+[ext_resource path="res://assets/levels/level1/tungku_api.png" type="Texture" id=4]
 [ext_resource path="res://level/level1/bakteri1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://level/level1/segi3.tscn" type="PackedScene" id=6]
-[ext_resource path="res://level/level1/ketupat.tscn" type="PackedScene" id=7]
-[ext_resource path="res://level/level1/trapesium.tscn" type="PackedScene" id=8]
-[ext_resource path="res://level/level1/segi6.tscn" type="PackedScene" id=9]
+[ext_resource path="res://level/level1/spawners.gd" type="Script" id=6]
+[ext_resource path="res://level/level1/pewaktu.gd" type="Script" id=7]
+[ext_resource path="res://assets/levels/animasi_waktu.png" type="Texture" id=8]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -53,21 +53,31 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 1107, 156 ), Rect2( 1106, 0, 1107, 156 ) ]
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -15.1131, 11.6456, -14.6214, 13.1681, -348.488, 13.0158, -337.67, 11.5949 )
+extents = Vector2( 90.3319, 79.282 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="Animation" id=4]
 
-custom_solver_bias = 0.0
-points = Vector2Array( -337.67, 11.5949, -348.488, 13.0158, -346.521, 7.94092, -337.67, 7.94092 )
+resource/name = "api"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.409622 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0 ]
+}
 
 [node name="game" type="Node"]
 
 [node name="env" type="Node2D" parent="."]
-
-script/script = ExtResource( 1 )
 
 [node name="bottomLayers" type="CanvasLayer" parent="env"]
 
@@ -82,7 +92,7 @@ editor/display_folded = true
 material/use_parent = true
 transform/pos = Vector2( 640, 360 )
 z/relative = false
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 region = true
 region_rect = Rect2( 0, 720, 1280, 720 )
 
@@ -101,7 +111,7 @@ autoplay = "bgplay"
 
 editor/display_folded = true
 transform/pos = Vector2( 726.535, 640.704 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 0, 0, 1107, 156 )
 
@@ -116,43 +126,46 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "move"
 
-[node name="spawner's boundaries" type="RigidBody2D" parent="env"]
+[node name="spawner's boundaries" type="Area2D" parent="env"]
 
 editor/display_folded = true
-input/pickable = false
+transform/pos = Vector2( 86.4745, 638.796 )
+input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 3.39673, 0, 0, 32.9105, 1330, 311.228 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 4 )
-shapes/1/transform = Matrix32( 3.39673, 0, 0, 32.9105, 1330, 311.228 )
-shapes/1/trigger = false
-collision/layers = 1
-collision/mask = 1
-mode = 1
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-velocity/linear = Vector2( 0, 0 )
-velocity/angular = 0.0
-damp_override/linear = -1.0
-damp_override/angular = -1.0
-script/script = ExtResource( 4 )
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 1047552
+collision/mask = 1047552
+script/script = ExtResource( 3 )
 
-[node name="collisions" type="CollisionPolygon2D" parent="env/spawner's boundaries"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="env/spawner's boundaries"]
 
-transform/pos = Vector2( 1330, 311.228 )
-transform/scale = Vector2( 3.39673, 32.9105 )
-build_mode = 0
-polygon = Vector2Array( -346.521, 7.94092, -337.67, 7.94092, -337.67, 11.5949, -15.1131, 11.6456, -14.6214, 13.1681, -348.488, 13.0158 )
-shape_range = Vector2( 0, 1 )
+shape = SubResource( 3 )
 trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="env/spawner's boundaries"]
+
+transform/pos = Vector2( 5.91918, 4.48776 )
+transform/scale = Vector2( 0.872088, 0.872088 )
+texture = ExtResource( 4 )
+hframes = 4
+region_rect = Rect2( 0, 0, 170, 191.091 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="env/spawner's boundaries/Sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/api = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "api"
 
 [node name="bakteri1" parent="env" instance=ExtResource( 5 )]
 
@@ -160,36 +173,66 @@ transform/pos = Vector2( 681.496, 342.105 )
 
 [node name="spawners" type="Position2D" parent="env"]
 
-transform/pos = Vector2( 1255.19, 643.87 )
+transform/pos = Vector2( 1255.19, 639.284 )
+script/script = ExtResource( 6 )
+timeDelay = 3.0
 
-[node name="segi3" parent="env" instance=ExtResource( 6 )]
+[node name="Control" type="Control" parent="."]
 
-transform/pos = Vector2( 352.946, 625.716 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 502.0
+margin/top = 2.0
+margin/right = 806.0
+margin/bottom = 189.0
+script/script = ExtResource( 7 )
 
-[node name="ketupat" parent="env" instance=ExtResource( 7 )]
+[node name="pewaktu" type="Sprite" parent="Control"]
 
-transform/pos = Vector2( 523.352, 623.444 )
+transform/pos = Vector2( 155.57, 70.0473 )
+transform/scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+region = true
+region_rect = Rect2( 250, 0, 250, 140 )
 
-[node name="trapesium" parent="env" instance=ExtResource( 8 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/pewaktu"]
 
-transform/pos = Vector2( 869.775, 626.445 )
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
-[node name="segi6" parent="env" instance=ExtResource( 9 )]
+[node name="labelWaktu" type="Label" parent="Control"]
 
-transform/pos = Vector2( 697.487, 626.059 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 9 )
+margin/left = 131.0
+margin/top = 54.0
+margin/right = 190.0
+margin/bottom = 111.0
+text = "1:30"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="trapesium 2" parent="env" instance=ExtResource( 8 )]
+[node name="Timer" type="Timer" parent="Control"]
 
-transform/pos = Vector2( 1033.74, 626.975 )
-
-[node name="segi3 2" parent="env" instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 1191.38, 622.504 )
+process_mode = 1
+wait_time = 90.0
+one_shot = true
+autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-visibility/visible = false
-transform/pos = Vector2( 503.171, 358.742 )
+transform/pos = Vector2( 639.856, 355.953 )
 anchor_mode = 1
 rotating = false
 current = false
@@ -206,5 +249,9 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[connection signal="area_enter" from="env/spawner's boundaries" to="env/spawner's boundaries" method="_on_spawners_boundaries_area_enter"]
+
+[connection signal="timeout" from="Control/Timer" to="Control" method="_on_Timer_timeout"]
 
 

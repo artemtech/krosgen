@@ -1,3 +1,3 @@
 extends Node
-
-var blockCounts = 4;
+var blockCounts = 5;
+var skor = 0;

@@ -16,6 +16,8 @@ func _ready():
 		if components extends BaseButton:
 			if components.get_name() == "exitButton" :
 				components.connect("pressed", self, "_exitAction")
+			elif components.get_name() == "playButton":
+				components.connect("pressed", self, "_playAction")
 			else:
 				#print(components.get_name())
 				components.connect("pressed", self, "_targets", [components.get_name()])
@@ -39,6 +41,8 @@ func _targets(var screen = "start"):
 		tween.interpolate_property(self, "rect/pos", current_coordinates, -target_coordinates, time, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
 		tween.start()
 	
+func _playAction():
+	get_tree().change_scene("res://level/intro/introduction.tscn")
 
 func _exitAction():
 	get_tree().quit()

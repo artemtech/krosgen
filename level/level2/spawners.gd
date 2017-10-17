@@ -3,7 +3,7 @@ extends Position2D
 export var timeDelay = 2.0;
 var time = 0;
 
-onready var bakteriE = load("res://level/enemy_e.tscn");
+onready var bakteriE = load("res://level/level2/enemy_e.tscn");
 
 func _ready():
 	time = timeDelay;

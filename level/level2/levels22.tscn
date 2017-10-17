@@ -9,6 +9,8 @@
 
 
 
+
+
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -78,11 +80,4 @@ build_mode = 0
 polygon = Vector2Array( -5.888, 12.458, -5.888, -10.331, -400.385, -10.331, -400.385, 12.458, -415.105, 12.458, -415.105, -11.5465, 8.83203, -11.5465, 8.83203, 12.458 )
 shape_range = Vector2( 0, 2 )
 trigger = false
-
-[node name="spawners" type="Position2D" parent="env"]
-
-transform/pos = Vector2( 650, 760 )
-script/script = ExtResource( 4 )
-timeDelay = 2.0
-
 

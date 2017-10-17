@@ -1,7 +1,8 @@
-extends RigidBody2D
+extends Area2D
 
 func _ready():
-	connect("body_enter",self,"on_end_collision");
-	
-func on_end_collision(body):
-	body.queue_free();
+	pass
+
+func _on_spawners_boundaries_area_enter( area ):
+	area.get_parent().queue_free()
+	levels_singletons.blockCounts+=1

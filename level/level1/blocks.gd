@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var a = Vector2();
+export var speedGerak = 60;
 onready var dragging = false
 var onBakteri = false
 var picked = false
@@ -9,7 +10,7 @@ var bakteriBox = null
 onready var blockBox = get_node("innerCollision/CollisionShape2D")
 
 func _ready():
-	bakteri = get_parent().get_node("bakteri1")
+	bakteri = get_parent().get_parent().get_node("bakteri1")
 	a = get_global_pos();
 	if self.get_name() == "trapesium":
 		get_node("innerCollision").set_layer_mask(2);
@@ -24,6 +25,7 @@ func _ready():
 #		bakteriBox = bakteri.find_node("ketupat")
 		get_node("innerCollision").set_layer_mask(5);
 	set_process_input(true)
+	set_process(true);
 
 func _on_innerCollision_input_event(viewport, event, shape):
 	if event.type == InputEvent.MOUSE_BUTTON:
@@ -50,7 +52,9 @@ func _input(event):
 			# Calculate the angular motion of the crank based on the arc made with the mouse
 #			var angle = (prev_pos - center).angle_to(new_pos - center)
 #			rotate(angle)
-			self.set_pos(new_pos)
+#			self.set_pos(new_pos) jangan dipakai, sebagai ganti, pakai move_to
+			self.move_to(new_pos)
+			set_process(false);
 			picked = true
 			get_child(0).get_node("AnimationPlayer").seek(0,true);
 			get_child(0).get_node("AnimationPlayer").stop(true);
@@ -61,19 +65,26 @@ func _input(event):
 			get_child(0).get_node("AnimationPlayer").stop(true);
 			call_deferred("_setDragging",false)
 			if onBakteri:
-				print("sudah masuk bakteri...")
+#				print("sudah masuk bakteri...")
+				levels_singletons.blockCounts+=1; # tambah 1 ketika sudah masuk..
 				queue_free();
 			else:
 				self.set_opacity(1)
 				self.move_to(a)
+				set_process(true);
 
 func _on_outerCollision_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		if event.pressed:
+			print("outerCollision sudah dihapus...")
 			get_node("outerCollision").set_collision_mask_bit(0,false)
 			get_node("outerCollision").set_layer_mask_bit(0,false)
 			get_node("outerCollision").set_pickable(false)
 			
+
+func _process(delta):
+	a = get_global_pos();
+	move(Vector2(-1,0)*speedGerak*delta);
 
 func isPicked():
 	return picked;
