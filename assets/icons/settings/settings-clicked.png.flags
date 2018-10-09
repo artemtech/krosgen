@@ -1,1 +1,2 @@
-filter=false
+filter=true
+gen_mipmaps=true
