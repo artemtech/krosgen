@@ -12,7 +12,7 @@ const default_settings = {
 }
 const DATA_DELIMITER = ":"
 
-var options_path = "user://options.txt"
+var options_path = "user://options.dat"
 var cache = default_settings
 
 func read_settings():

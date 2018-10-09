@@ -1,27 +1,46 @@
 extends Position2D
 
-export var timeDelay = 2.0;
-var time = 0;
 
-onready var bakteriE = load("res://level/level2/enemy_e.tscn");
+export var timeDelay = 3.0;
+
+var timer = 0;
+
+
+onready var enemy_h = load("res://level/level2/enemy_h.tscn");
+onready var enemy_v = load("res://level/level2/enemy_v.tscn");
+
+var spawnObjects_h;
+var spawnObjects_v;
 
 func _ready():
-	time = timeDelay;
+	timer = timeDelay;
+	#counts = levels_singletons.blockCounts;
 	set_process(true);
 	
 func _process(delta):
-	time -= delta;
-	if time <= 0:
+	timer -= delta;
+	if timer <= 0:
 		spawn();
-		time = timeDelay;
+		#print(counts)
+		timer = timeDelay;
 		return;
-		
+
+	
+	
+
 func spawn():
 	randomize();
-	var rand = rand_range(0,3);
-	var spawnObjects;
-	if rand >= 0 and rand <= 3:
-		spawnObjects = bakteriE.instance();
-		
-	add_child(spawnObjects);
+	#var randY = rand_range(0,818);
+	#var randX=rand_range(0,1274);
+	var randY = rand_range(0,600);
+	var randX=rand_range(0,900);
 	
+	spawnObjects_h= enemy_h.instance();
+	spawnObjects_v=enemy_v.instance();
+	spawnObjects_h.set_pos(Vector2(900,randY));
+	spawnObjects_v.set_pos(Vector2(randX,600));
+	
+	add_child(spawnObjects_h);
+	add_child(spawnObjects_v);
+	
+

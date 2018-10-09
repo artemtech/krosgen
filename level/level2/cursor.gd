@@ -2,6 +2,7 @@ extends Area2D
 var shooting=false
 var target = Vector2();
 
+
 func _ready():
 	set_process_input(true);
 	set_fixed_process(true);
@@ -19,7 +20,7 @@ func _input(ie):
 		
 func _fixed_process(delta):
 	if shooting:
-		var space_state = global.space_state;
+		var space_state = get_world_2d().get_direct_space_state()
 		#var target = get_viewport().get_mouse_pos();
 		#var result = space_state.intersect_ray(target,target-Vector2(1,1));
 		

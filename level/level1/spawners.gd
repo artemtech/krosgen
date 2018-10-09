@@ -1,10 +1,10 @@
 extends Position2D
 
-export var timeDelay = 2.0;
+var timeDelay = 2;
 var isPicked = false;
 var pickedObjects;
 var time = 0;
-var counts;
+var counts = 5;
 
 onready var segi6 = load("res://level/level1/segi6.tscn");
 onready var segi3 = load("res://level/level1/segi3.tscn");
@@ -12,8 +12,8 @@ onready var trapesium = load("res://level/level1/trapesium.tscn");
 onready var ketupat = load("res://level/level1/ketupat.tscn");
 
 func _ready():
+	levels_singletons.blockCounts = counts;
 	time = timeDelay;
-	counts = levels_singletons.blockCounts;
 	set_fixed_process(true);
 	
 func _fixed_process(delta):
@@ -38,6 +38,7 @@ func spawn():
 	randomize();
 	var rand = rand_range(0,4);
 	var spawnObjects;
+	
 	if rand >= 0 and rand <= 1:
 		spawnObjects = segi6.instance();
 	elif rand >= 1 and rand <= 2:

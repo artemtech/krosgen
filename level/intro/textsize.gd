@@ -8,21 +8,21 @@ var dialog = [
 "Mitra tani kedatangan jenis tebu baru yang lebih besar dan lebih murah karena tidak seberapa manis",
 "Jika dibandingkan , Mitra tani memilih tebu ini karena lebih menguntungkan untuk mereka",
 "karena banyak perusahaan yang mementingkan volume dan menggunakan pemanis buatan sehingga tidak terlalu butuh yang manis",
-"terkejut tebunya tidak laku, Luna merasa depresi , darimana ia akan bisa menjual tebunya sekarang ?",
+"terkejut tebunya tidak laku, Luna merasa depresi , kemana ia akan bisa menjual tebunya sekarang ?",
 "Terlamun dalam depresi ia menemukan sebuah lampu ajaib",
-"Munkin lampu ini dapat mengubah nasibku , Luna pikir"
-,"Namun ........","BOOOOOOOM","Ternyata lapu itu adalah lampu iseng yang sedang populer belakangan ini",
+"Mungkin lampu ini dapat mengubah nasibku , Luna pikir"
+,"Namun ........","BOOOOOOOM","Ternyata lampu itu adalah lampu iseng yang sedang populer belakangan ini",
 "Hueeeeeeee , Luna menangis karena tidak tahan dengan kesialan dan stress yang ia rasakan hari ini",
-"Namun Paman Luna sedang keteulan ada di sekitar menghibur Luna dan mengajaknya ke suatu tempat untuk menyenangkannya",
+"Namun Paman Luna sedang kebetulan ada di sekitar menghibur Luna dan mengajaknya ke suatu tempat untuk menyenangkannya",
 "Satu Perjalanan Kemudian ...........", "Ternyata paman mengajak Luna ke laboratorium pertanian",
 "Luna baru pertama kali datang ke tempat ini dan terkagum-kagum dengan apa yang ia lihat",
-"Paman membawa Luna ke dalam dan menjelaskan bahwa ia sedang meneliti sesutu yang berhubungan dengan tebu yang bisa menyelamatkan pertanian luna",
+"Paman membawa Luna ke dalam dan menjelaskan bahwa ia sedang meneliti sesutu yang berhubungan dengan tebu yang bisa menyelamatkan pertanian Luna",
 "Paman menjelaskan tentang Transgenik dimana Paman dapat memodifikasi sifat dari sebuah tanaman",
 "Contohnya menggabungkan sifat tahan panas kaktus dengan jagung biasa untuk membuat jagung yang tahan kekeringan",
 "Dalam hal ini paman memiliki sampel tebu ukuran besar , yang paman berusaha silangkan dengan tebu manis milik Luna",
 "Luna sangat senang melihat kesempatan ini , akhirnya ia punya kesempatan untuk bisa bertani lagi",
 "Jika Sudah paham apa yang akan dilakukan , ayo kita coba melakukannya !, kata paman",
-"Dan Mereka Berseiap untuk mencoba melakukan percobaan transgenik.",
+"Dan Mereka Bersiap untuk mencoba melakukan percobaan transgenik.",
 "Tahap Pertama adalah menemukan gen penentu manis dari tebu yang manis dan diberikan ke bakteri",
 "Nantinya Bakteri bakteri akan mengambil sifat manis itu dan menjaganya dan susunan DNA nya , menghasilkan bakteri pembawa sifat manis",
 "Dan untung saja kita sudah punya ekstrak DNA manis , ayo sekarang kita masukkan DNA ini ke bakteri !"
@@ -30,6 +30,7 @@ var dialog = [
 var page = 0;
 
 func _ready():
+#	print("panjangnya: ",dialog.size())
 	set_bbcode(dialog[0])
 	set_visible_characters(0)
 	set_process_input(true)
@@ -49,5 +50,5 @@ func _input(event):
 			set_visible_characters(get_total_character_count())
 
 func _on_Timer_timeout():
-	set_visible_characters(get_visible_characters()+1)
+	set_visible_characters(get_visible_characters()+5)
 

@@ -10,9 +10,14 @@ var bialog = [
 var page = 0;
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	set_bbcode(bialog[0])
 	set_visible_characters(0)
 	set_process_input(true)
+#	set_process(true)
+#
+#func _process(delta):
+#	set_bbcode(bialog[page])
 
 func getPage():
 	return page
@@ -29,5 +34,5 @@ func _input(event):
 			set_visible_characters(get_total_character_count())
 
 func _on_Timer_timeout():
-	set_visible_characters(get_visible_characters()+1)
+	set_visible_characters(get_visible_characters()+5)
 

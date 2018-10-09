@@ -5,10 +5,12 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	if(levels_singletons.get_bgm()):
+		levels_singletons.play_bgm(self)
 	pass
 
 
 func _on_button_akhir_pressed():
 	get_tree().change_scene("res://level/level1/levels.tscn")
+
+

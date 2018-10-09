@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://level/level1/bakteri1.gd" type="Script" id=1]
 [ext_resource path="res://assets/levels/level1/b2.png" type="Texture" id=2]
@@ -25,21 +25,26 @@ points = Vector2Array( -32.3312, -28.7045, 11.5597, -28.7045, 35.9435, 11.285, 1
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -54.3793, -6.563, 34.597, -6.563, 9.57239, 35.1446, -30.5664, 33.8824 )
+points = Vector2Array( -32.3312, -28.7045, 11.5597, -28.7045, 35.9435, 11.285, 12.535, 51.2744, -33.3065, 51.2744, -56.715, 10.3096 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -54.3793, -6.563, 34.597, -6.563, 9.57239, 35.1446, -30.5664, 33.8824 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 11.8974, 9.12959, -8.83392, 46.7963, -30.7332, 9.42158, -12.3378, -27.3692 )
 
 [node name="bakteri2" type="Node2D"]
 
+transform/pos = Vector2( 90, -19 )
 script/script = ExtResource( 1 )
-skorSeharusnya = 10
+skorSeharusnya = 8
 
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/rot = -6.50947
 texture = ExtResource( 2 )
 
 [node name="segi3_Col" type="Area2D" parent="." groups=[
@@ -47,7 +52,7 @@ texture = ExtResource( 2 )
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( -119.965, -9.41666 )
+transform/pos = Vector2( -89.965, 33.5833 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -2.48351, -1.25651 )
@@ -77,7 +82,7 @@ texture = ExtResource( 3 )
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( 90.4658, -44.1504 )
+transform/pos = Vector2( 158.466, 32.8496 )
 transform/scale = Vector2( 0.938035, 0.938035 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
@@ -108,11 +113,10 @@ texture = ExtResource( 3 )
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( -66.8693, -67.357 )
-transform/scale = Vector2( 0.872481, 0.862581 )
+transform/pos = Vector2( -35.6687, -27.2373 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.00293, 3.23908 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.80229, 0.598324 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -123,7 +127,7 @@ collision/mask = 4096
 
 [node name="segi6" type="CollisionPolygon2D" parent="segi6_Col"]
 
-transform/pos = Vector2( -4.00293, 3.23908 )
+transform/pos = Vector2( -1.80229, 0.598324 )
 build_mode = 0
 polygon = Vector2Array( -32.3312, -28.7045, 11.5597, -28.7045, 35.9435, 11.285, 12.535, 51.2744, -33.3065, 51.2744, -56.715, 10.3096 )
 shape_range = Vector2( 0, 0 )
@@ -140,11 +144,10 @@ texture = ExtResource( 4 )
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( 4.42799, -26.7447 )
-transform/scale = Vector2( 0.872481, 0.862581 )
+transform/pos = Vector2( 111.379, -26.3046 )
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.00293, 3.23908 )
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.481903, 0.158192 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -155,7 +158,7 @@ collision/mask = 4096
 
 [node name="segi6" type="CollisionPolygon2D" parent="segi6_Col1"]
 
-transform/pos = Vector2( -4.00293, 3.23908 )
+transform/pos = Vector2( -0.481903, 0.158192 )
 build_mode = 0
 polygon = Vector2Array( -32.3312, -28.7045, 11.5597, -28.7045, 35.9435, 11.285, 12.535, 51.2744, -33.3065, 51.2744, -56.715, 10.3096 )
 shape_range = Vector2( 0, 0 )
@@ -167,47 +170,15 @@ visibility/opacity = 0.4
 transform/pos = Vector2( -12.803, 13.4424 )
 texture = ExtResource( 4 )
 
-[node name="segi6_Col2" type="Area2D" parent="." groups=[
-"collisionDetektor",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 119.045, 18.3802 )
-transform/scale = Vector2( 0.872481, 0.862581 )
-input/pickable = true
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.00293, 3.23908 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 4096
-collision/mask = 4096
-
-[node name="segi6" type="CollisionPolygon2D" parent="segi6_Col2"]
-
-transform/pos = Vector2( -4.00293, 3.23908 )
-build_mode = 0
-polygon = Vector2Array( -32.3312, -28.7045, 11.5597, -28.7045, 35.9435, 11.285, 12.535, 51.2744, -33.3065, 51.2744, -56.715, 10.3096 )
-shape_range = Vector2( 0, 0 )
-trigger = true
-
-[node name="Sprite" type="Sprite" parent="segi6_Col2"]
-
-visibility/opacity = 0.4
-transform/pos = Vector2( -12.803, 13.4424 )
-texture = ExtResource( 4 )
-
 [node name="trapes_Col" type="Area2D" parent="." groups=[
 "collisionDetektor",
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( 5.25475, -87.8332 )
+transform/pos = Vector2( 38.4162, -50.1497 )
 transform/scale = Vector2( 0.977835, 0.977835 )
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -3.2995, 0 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -231,14 +202,46 @@ visibility/opacity = 0.4
 transform/pos = Vector2( -12.803, 13.4424 )
 texture = ExtResource( 5 )
 
+[node name="trapes_Col1" type="Area2D" parent="." groups=[
+"collisionDetektor",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 38.4162, 37.4218 )
+transform/scale = Vector2( 0.977835, 0.977835 )
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -3.2995, 0 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2048
+collision/mask = 2048
+
+[node name="trapesium" type="CollisionPolygon2D" parent="trapes_Col1"]
+
+transform/pos = Vector2( -3.2995, 0 )
+build_mode = 0
+polygon = Vector2Array( -54.3793, -6.563, 34.597, -6.563, 9.57239, 35.1446, -30.5664, 33.8824 )
+shape_range = Vector2( 0, 0 )
+trigger = true
+
+[node name="Sprite" type="Sprite" parent="trapes_Col1"]
+
+visibility/opacity = 0.4
+transform/pos = Vector2( -12.803, 13.4424 )
+texture = ExtResource( 5 )
+
 [node name="ketupat_Col" type="Area2D" parent="." groups=[
 "collisionDetektor",
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( 138.938, -63.783 )
+transform/pos = Vector2( -113.162, -27.2949 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -267,9 +270,9 @@ texture = ExtResource( 6 )
 ]]
 
 editor/display_folded = true
-transform/pos = Vector2( -45.2537, 14.6348 )
+transform/pos = Vector2( 184.29, -26.4973 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -293,68 +296,6 @@ transform/pos = Vector2( -10.4081, 9.84999 )
 transform/rot = -4.49781
 texture = ExtResource( 6 )
 
-[node name="ketupat_Col2" type="Area2D" parent="." groups=[
-"collisionDetektor",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 49.6304, -66.2154 )
-input/pickable = true
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 1024
-collision/mask = 1024
-
-[node name="ketupat" type="CollisionPolygon2D" parent="ketupat_Col2"]
-
-build_mode = 0
-polygon = Vector2Array( -12.3378, -27.3692, -30.7332, 9.42158, -8.83392, 46.7963, 11.8974, 9.12959 )
-shape_range = Vector2( 0, 0 )
-trigger = true
-
-[node name="Sprite" type="Sprite" parent="ketupat_Col2"]
-
-visibility/opacity = 0.4
-transform/pos = Vector2( -10.4081, 9.84999 )
-transform/rot = -4.49781
-texture = ExtResource( 6 )
-
-[node name="ketupat_Col3" type="Area2D" parent="." groups=[
-"collisionDetektor",
-]]
-
-editor/display_folded = true
-transform/pos = Vector2( 51.4387, 14.8591 )
-input/pickable = true
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision/layers = 1024
-collision/mask = 1024
-
-[node name="ketupat" type="CollisionPolygon2D" parent="ketupat_Col3"]
-
-build_mode = 0
-polygon = Vector2Array( -12.3378, -27.3692, -30.7332, 9.42158, -8.83392, 46.7963, 11.8974, 9.12959 )
-shape_range = Vector2( 0, 0 )
-trigger = true
-
-[node name="Sprite" type="Sprite" parent="ketupat_Col3"]
-
-visibility/opacity = 0.4
-transform/pos = Vector2( -10.4081, 9.84999 )
-transform/rot = -4.49781
-texture = ExtResource( 6 )
-
 [connection signal="area_enter" from="segi3_Col" to="." method="_on_area_enter"]
 
 [connection signal="area_exit" from="segi3_Col" to="." method="_on_area_exit"]
@@ -371,13 +312,13 @@ texture = ExtResource( 6 )
 
 [connection signal="area_exit" from="segi6_Col1" to="." method="_on_area_exit"]
 
-[connection signal="area_enter" from="segi6_Col2" to="." method="_on_area_enter"]
-
-[connection signal="area_exit" from="segi6_Col2" to="." method="_on_area_exit"]
-
 [connection signal="area_enter" from="trapes_Col" to="." method="_on_area_enter"]
 
 [connection signal="area_exit" from="trapes_Col" to="." method="_on_area_exit"]
+
+[connection signal="area_enter" from="trapes_Col1" to="." method="_on_area_enter"]
+
+[connection signal="area_exit" from="trapes_Col1" to="." method="_on_area_exit"]
 
 [connection signal="area_enter" from="ketupat_Col" to="." method="_on_area_enter"]
 
@@ -386,13 +327,5 @@ texture = ExtResource( 6 )
 [connection signal="area_enter" from="ketupat_Col1" to="." method="_on_area_enter"]
 
 [connection signal="area_exit" from="ketupat_Col1" to="." method="_on_area_exit"]
-
-[connection signal="area_enter" from="ketupat_Col2" to="." method="_on_area_enter"]
-
-[connection signal="area_exit" from="ketupat_Col2" to="." method="_on_area_exit"]
-
-[connection signal="area_enter" from="ketupat_Col3" to="." method="_on_area_enter"]
-
-[connection signal="area_exit" from="ketupat_Col3" to="." method="_on_area_exit"]
 
 

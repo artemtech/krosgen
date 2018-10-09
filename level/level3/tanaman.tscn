@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://level/level3/tanaman.gd" type="Script" id=1]
+[ext_resource path="res://level/level3/sprite_animasi.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/levels/level3/plant_indicator_01.png" type="Texture" id=3]
+[ext_resource path="res://assets/levels/level3/plant_over_01.png" type="Texture" id=4]
+[ext_resource path="res://assets/levels/level3/plant_progress_01.png" type="Texture" id=5]
+[ext_resource path="res://assets/levels/level3/water_need/pengairan2.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/papercuts-2.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 155, 110 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 40
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 7 )
+
+[node name="tanaman" type="KinematicBody2D" groups=[
+"tanaman",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 50, 220 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+start_time = 0
+end_time = 20
+
+[node name="sprites" type="AnimatedSprite" parent="."]
+
+frames = ExtResource( 2 )
+animation = "tanaman"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 50, 220 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="water_need_indicator" type="TextureProgress" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 230.0
+margin/top = 80.0
+margin/right = 256.0
+margin/bottom = 292.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 50.0
+range/exp_edit = false
+range/rounded = false
+texture/under = ExtResource( 3 )
+texture/over = ExtResource( 4 )
+texture/progress = ExtResource( 5 )
+mode = 3
+radial_fill/fill_degrees = 360.0
+radial_fill/center_offset = Vector2( 0, 0 )
+
+[node name="water_need" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 60, -190 )
+transform/scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 230.0
+margin/top = 320.0
+margin/right = 270.0
+margin/bottom = 380.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tanaman_collision" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 50, 220 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tanaman_collision"]
+
+transform/pos = Vector2( 50, 220 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="tanaman_collision" to="." method="_on_tanaman_collision_area_enter"]
+
+

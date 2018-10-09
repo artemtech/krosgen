@@ -33,8 +33,10 @@ func set_pengaturan(setting, value):
 		settings.get_node(setting).set_pressed(value)
 		var music_node = get_node("../musics")
 		if bool_music:
+			levels_singletons.set_bgm(true)
 			music_node.play()
 		else:
+			levels_singletons.set_bgm(false)
 			music_node.stop()
 	else:
 		settings.get_node(setting).set_pressed(value)

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://level/intro/textsize.gd" type="Script" id=1]
 
-[node name="Polygon2D" type="Polygon2D"]
+[node name="text_field" type="Polygon2D"]
 
 transform/pos = Vector2( 16, 0 )
 polygon = Vector2Array( 80, 560, 1184, 560, 1184, 672, 80, 672 )

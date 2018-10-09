@@ -27,7 +27,7 @@ preload("res://assets/levels/intro/sc22.png")]
 var g=0;
 var g1=0;
 func cari():
-	g = get_node("../Polygon2D").get_child(0).getPage()
+	g = get_node("../text_field").get_child(0).getPage()
 	print(g)
 
 func klarifikasi(g):

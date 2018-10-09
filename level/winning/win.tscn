@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://level/background_image.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/levels/intro/sc26.png" type="Texture" id=2]
+[ext_resource path="res://level/winning/textoe.gd" type="Script" id=3]
+[ext_resource path="res://assets/theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/fonts/papercuts-2.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="GDScript" id=3]
+
+resource/name = "antara2_3"
+script/source = "extends Node
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	if(levels_singletons.get_bgm()):
+		levels_singletons.play_bgm(self)
+	pass
+"
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 32
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=2]
+
+resource/name = "skip_button"
+script/source = "#Built-in script
+extends Button
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_button_skip_pressed():
+	print(get_node(\"../text_field\").get_child(0).dialog.size())
+	get_node(\"../text_field\").get_child(0).page = get_node(\"../text_field\").get_child(0).dialog.size() -1
+"
+
+[node name="antara2_3" type="Node"]
+
+script/script = SubResource( 3 )
+
+[node name="background_image" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 570.627, 327.274 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+
+transform/pos = Vector2( 641.474, 275.883 )
+transform/scale = Vector2( 1.28681, 1.27459 )
+texture = ExtResource( 2 )
+
+[node name="text_field" type="Polygon2D" parent="Node2D"]
+
+polygon = Vector2Array( 111.234, 560.058, 1154.8, 560.058, 1154.8, 689.08, 110.348, 687.182 )
+uv = Vector2Array(  )
+color = Color( 0.235657, 0.546561, 0.773438, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D/text_field"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 129.0
+margin/top = 566.0
+margin/right = 637.0
+margin/bottom = 623.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode/enabled = true
+bbcode/bbcode = ""
+visible_characters = -1
+percent_visible = 1.0
+script/script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="Node2D/text_field"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = true
+
+[node name="Button" type="Button" parent="Node2D"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 4 )
+margin/left = 899.0
+margin/top = 629.0
+margin/right = 1144.0
+margin/bottom = 679.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Mulai Permainan !"
+flat = false
+
+[node name="button_skip" type="Button" parent="Node2D"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1127.0
+margin/top = 474.0
+margin/right = 1219.0
+margin/bottom = 528.0
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Skip"
+flat = false
+script/script = SubResource( 2 )
+
+[connection signal="timeout" from="Node2D/text_field/Timer" to="Node2D/text_field/RichTextLabel" method="_on_Timer_timeout"]
+
+[connection signal="pressed" from="Node2D/Button" to="Node2D/text_field/RichTextLabel" method="_on_Button_pressed"]
+
+[connection signal="pressed" from="Node2D/button_skip" to="Node2D/button_skip" method="_on_button_skip_pressed"]
+
+

@@ -8,9 +8,18 @@ var picked = false
 var bakteri = null
 var bakteriBox = null
 onready var blockBox = get_node("innerCollision/CollisionShape2D")
+onready var animated = get_child(0).get_node("animasi")
+var list_sfx = [
+preload("res://assets/bgm/Puzzle/puzzle correct.ogg"),
+preload("res://assets/bgm/Puzzle/puzzle wrong.ogg")
+]
+var sfx
 
 func _ready():
-	bakteri = get_parent().get_parent().get_node("bakteri1")
+	sfx = StreamPlayer.new()
+	sfx.set_name("sfx")
+	add_child(sfx)
+	bakteri = get_parent().get_parent().get_node("bakteriSpawners").get_child(0)
 	a = get_global_pos();
 	if self.get_name() == "trapesium":
 		get_node("innerCollision").set_layer_mask(2);
@@ -39,7 +48,7 @@ func _setDragging(status):
 func _on_innerCollision_area_enter( area ):
 	if get_node("innerCollision").overlaps_area(area):
 		if area.get_child(0).get_name() == self.get_child(0).get_name():
-			print("blok nabrak: ",area.get_child(0).get_name())
+#			print("blok nabrak: ",area.get_child(0).get_name())
 			onBakteri = true
 
 func _input(event):
@@ -67,8 +76,17 @@ func _input(event):
 			if onBakteri:
 #				print("sudah masuk bakteri...")
 				levels_singletons.blockCounts+=1; # tambah 1 ketika sudah masuk..
+				if levels_singletons.get_sfx():
+					get_node("sfx").set_stream(list_sfx[0])
+					get_node("sfx").play()
+#				get_node("animasi").set_hidden(false)
+				animated.play()
+				yield(animated,"finished")
 				queue_free();
 			else:
+				if levels_singletons.get_sfx():
+					get_node("sfx").set_stream(list_sfx[1])
+					get_node("sfx").play()
 				self.set_opacity(1)
 				self.move_to(a)
 				set_process(true);
@@ -76,7 +94,7 @@ func _input(event):
 func _on_outerCollision_input_event( viewport, event, shape_idx ):
 	if event.type == InputEvent.MOUSE_BUTTON:
 		if event.pressed:
-			print("outerCollision sudah dihapus...")
+#			print("outerCollision sudah dihapus...")
 			get_node("outerCollision").set_collision_mask_bit(0,false)
 			get_node("outerCollision").set_layer_mask_bit(0,false)
 			get_node("outerCollision").set_pickable(false)

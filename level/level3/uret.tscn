@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://level/level3/uret.gd" type="Script" id=1]
+[ext_resource path="res://level/level3/sprite_animasi.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 20 )
+
+[node name="uret" type="KinematicBody2D" groups=[
+"uret",
+"musuh",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 5
+collision/mask = 5
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+start_x = 0
+start_y = 0
+speed = 30
+type = 2
+
+[node name="sprites" type="AnimatedSprite" parent="."]
+
+transform/scale = Vector2( 0.7, 0.7 )
+frames = ExtResource( 2 )
+animation = "uret"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 999.0
+one_shot = false
+autostart = false
+
+

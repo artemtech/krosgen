@@ -1,7 +1,7 @@
 extends Control
 
 export(float) var screen_move_speed = 1500
-
+var intro = "res://level/intro/introduction.tscn"
 var current_screen = "start"
 var old_size = Vector2()
 
@@ -19,12 +19,13 @@ func _ready():
 			elif components.get_name() == "playButton":
 				components.connect("pressed", self, "_playAction")
 			else:
-				#print(components.get_name())
+				print(components.get_name())
 				components.connect("pressed", self, "_targets", [components.get_name()])
 	
 	for node in get_children():
 		if node.has_node("tutupButton"):
 			node.get_node("tutupButton").connect("pressed", self, "_targets", ["start"])
+			
 
 func _targets(var screen = "start"):
 	current_screen = screen
@@ -42,13 +43,11 @@ func _targets(var screen = "start"):
 		tween.start()
 	
 func _playAction():
-	get_tree().change_scene("res://level/intro/introduction.tscn")
+	get_tree().change_scene(intro)
 
 func _exitAction():
 	get_tree().quit()
 
 func _on_tutupButton_pressed():
-	if current_screen == "settings":
-		pengaturan.set_hidden(true)
-	elif current_screen == "info":
-		informasi.set_hidden(true)
+	informasi.set_hidden(true)
+	pengaturan.set_hidden(true)

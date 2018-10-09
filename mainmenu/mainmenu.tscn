@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://mainmenu/mainmenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg/main_menu.png" type="Texture" id=2]
@@ -25,13 +25,8 @@
 [ext_resource path="res://assets/icons/settings/settings-tutup-clicked.png" type="Texture" id=23]
 [ext_resource path="res://assets/icons/settings/settings-tutup-hover.png" type="Texture" id=24]
 [ext_resource path="res://assets/icons/settings/gambar_settings.png" type="Texture" id=25]
-[ext_resource path="res://mainmenu/info.gd" type="Script" id=26]
-[ext_resource path="res://assets/info/info-bg.png" type="Texture" id=27]
-[ext_resource path="res://assets/info/info.png" type="Texture" id=28]
-[ext_resource path="res://assets/icons/info/arrow.png" type="Texture" id=29]
-[ext_resource path="res://assets/icons/info/arrow-clicked.png" type="Texture" id=30]
-[ext_resource path="res://assets/icons/info/arrow-hover.png" type="Texture" id=31]
-[ext_resource path="res://assets/bgm/peaceful day.ogg" type="AudioStream" id=32]
+[ext_resource path="res://assets/levels/CREDITS.png" type="Texture" id=26]
+[ext_resource path="res://assets/bgm/mainmenu_win_cerita_up10.ogg" type="AudioStream" id=27]
 
 [sub_resource type="Animation" id=1]
 
@@ -50,21 +45,32 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 0, 1280, 720 ), Rect2( 1280, 0, 1280, 720 ) ]
 }
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="Animation" id=2]
 
-flags = 7
-image = Image()
-size = Vector2( 0, 0 )
-storage = 0
-lossy_quality = 0.7
-
-[sub_resource type="ImageTexture" id=3]
-
-flags = 7
-image = Image()
-size = Vector2( 0, 0 )
-storage = 0
-lossy_quality = 0.7
+resource/name = "tebu goyang"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 2
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 1 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5, 1 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 635, 434 ), Vector2( 640, 434 ), Vector2( 635, 434 ) ]
+}
 
 [node name="menu" type="Control"]
 
@@ -74,8 +80,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1370.0
-margin/bottom = 760.0
+margin/right = 1280.0
+margin/bottom = 720.0
 script/script = ExtResource( 1 )
 screen_move_speed = 1500
 
@@ -89,8 +95,8 @@ scale = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="background"]
 
-transform/pos = Vector2( 640.815, 360.166 )
-transform/scale = Vector2( 0.667515, 0.666974 )
+transform/pos = Vector2( 639.507, 360.166 )
+transform/scale = Vector2( 0.666153, 0.666974 )
 texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
@@ -123,19 +129,26 @@ texture = ExtResource( 4 )
 
 [node name="tebu" type="Sprite" parent="background"]
 
+editor/display_folded = true
 transform/pos = Vector2( 635, 434 )
 texture = ExtResource( 5 )
 vframes = 3
 
-[node name="logo" type="Sprite" parent="background"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/tebu"]
 
-transform/pos = Vector2( 620, 280 )
-transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 6 )
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+"anims/tebu goyang" = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "tebu goyang"
 
 [node name="main" type="ReferenceFrame" parent="."]
 
 process/pause_mode = 2
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -144,6 +157,12 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1280.0
 margin/bottom = 720.0
+
+[node name="logo" type="Sprite" parent="main"]
+
+transform/pos = Vector2( 620, 280 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="main"]
 
@@ -156,13 +175,14 @@ margin/left = 36.0
 margin/top = 667.0
 margin/right = 409.0
 margin/bottom = 711.0
-text = "©  2017 Universitas Jember"
+text = "©  Inplant 2018 - Universitas Jember"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="buttons" type="Container" parent="main"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -174,7 +194,6 @@ margin/bottom = 0.0
 
 [node name="info" type="TextureButton" parent="main/buttons"]
 
-visibility/visible = false
 rect/scale = Vector2( 0.3, 0.3 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -196,15 +215,14 @@ params/stretch_mode = 0
 
 [node name="exitButton" type="TextureButton" parent="main/buttons"]
 
-rect/scale = Vector2( 0.3, 0.3 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1175.0
-margin/top = 18.0
-margin/right = 1428.0
-margin/bottom = 270.0
+margin/left = 1154.0
+margin/top = 14.0
+margin/right = 1262.0
+margin/bottom = 122.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
@@ -213,6 +231,7 @@ textures/normal = ExtResource( 11 )
 textures/pressed = ExtResource( 12 )
 textures/hover = ExtResource( 13 )
 params/resize_mode = 0
+params/scale = Vector2( 0.6, 0.6 )
 params/stretch_mode = 3
 
 [node name="playButton" type="TextureButton" parent="main/buttons"]
@@ -244,10 +263,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1121.0
-margin/top = 594.0
-margin/right = 1516.0
-margin/bottom = 988.0
+margin/left = 1048.0
+margin/top = 591.0
+margin/right = 1443.0
+margin/bottom = 985.0
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
@@ -268,14 +287,14 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 720.0
-margin/right = 0.0
+margin/right = 1280.0
 margin/bottom = 1488.0
 script/script = ExtResource( 20 )
 
 [node name="bg-settings" type="Sprite" parent="settings"]
 
 material/use_parent = true
-transform/pos = Vector2( 700, 380 )
+transform/pos = Vector2( 641, 380 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 21 )
 
@@ -286,9 +305,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 580.0
+margin/left = 532.0
 margin/top = 556.0
-margin/right = 947.0
+margin/right = 899.0
 margin/bottom = 738.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -301,7 +320,7 @@ params/stretch_mode = 0
 
 [node name="allsettingslabel" type="Sprite" parent="settings"]
 
-transform/pos = Vector2( 590, 400 )
+transform/pos = Vector2( 505, 400 )
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 25 )
 
@@ -316,9 +335,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 890.0
+margin/left = 807.0
 margin/top = 294.0
-margin/right = 387.0
+margin/right = 397.0
 margin/bottom = 264.0
 custom_constants/separation = 27
 alignment = 0
@@ -377,6 +396,7 @@ align = 0
 [node name="info" type="ReferenceFrame" parent="."]
 
 process/pause_mode = 2
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -384,22 +404,13 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 720.0
 margin/right = 1280.0
-margin/bottom = 1440.0
-script/script = ExtResource( 26 )
-screen_move_speed = 350
+margin/bottom = 1489.0
 
 [node name="bg" type="Sprite" parent="info"]
 
-transform/pos = Vector2( 640, 359.824 )
-transform/scale = Vector2( 0.937042, 0.937042 )
-texture = ExtResource( 27 )
-
-[node name="konten" type="Sprite" parent="info"]
-
-transform/pos = Vector2( 650, 360 )
-texture = ExtResource( 28 )
-region = true
-region_rect = Rect2( 2000, 0, 1000, 441 )
+transform/pos = Vector2( 640, 352.271 )
+transform/scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 26 )
 
 [node name="tutupButton" type="TextureButton" parent="info"]
 
@@ -409,72 +420,22 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1090.0
-margin/top = 30.0
-margin/right = 1355.0
-margin/bottom = 288.0
+margin/left = 530.0
+margin/top = 575.0
+margin/right = 897.0
+margin/bottom = 757.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 11 )
-textures/pressed = ExtResource( 12 )
-textures/hover = ExtResource( 13 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="prev" type="TextureButton" parent="info"]
-
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-rect/rotation = 90.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 173.0
-margin/top = -332.0
-margin/right = 77.0
-margin/bottom = -428.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 29 )
-textures/pressed = ExtResource( 30 )
-textures/hover = ExtResource( 31 )
-textures/disabled = SubResource( 2 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="next" type="TextureButton" parent="info"]
-
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-rect/rotation = -90.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -156.0
-margin/top = -230.0
-margin/right = -252.0
-margin/bottom = -326.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 29 )
-textures/pressed = ExtResource( 30 )
-textures/hover = ExtResource( 31 )
-textures/disabled = SubResource( 3 )
+textures/normal = ExtResource( 22 )
+textures/pressed = ExtResource( 23 )
+textures/hover = ExtResource( 24 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
 [node name="musics" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 32 )
+stream/stream = ExtResource( 27 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -489,6 +450,26 @@ playback/process_mode = 1
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+transform/pos = Vector2( 638.389, 357.508 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = 0
+limit/top = 0
+limit/right = 1280
+limit/bottom = 768
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
 
 [connection signal="pressed" from="settings/tutupButton" to="." method="_on_tutupButton_pressed"]
 

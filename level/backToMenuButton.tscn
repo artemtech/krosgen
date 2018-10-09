@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://assets/icons/exit/exit1.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/exit/exit-clicked1.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/exit/exit-hover1.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/papercuts-2.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="GDScript" id=1]
+
+resource/name = "backToMenuButton"
+script/source = "#Built-in script
+extends TextureButton
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_backToMenuButton_pressed():
+	get_tree().change_scene(\"res://mainmenu/mainmenu.tscn\")
+	get_tree().set_pause(false)
+"
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 24
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 4 )
+
+[node name="backToMenuButton" type="TextureButton"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1160.0
+margin/top = 587.0
+margin/right = 1275.2
+margin/bottom = 702.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 1 )
+textures/pressed = ExtResource( 2 )
+textures/hover = ExtResource( 3 )
+params/resize_mode = 0
+params/scale = Vector2( 0.04, 0.04 )
+params/stretch_mode = 0
+script/script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -108.0
+margin/top = 23.0
+margin/right = 13.0
+margin/bottom = 105.0
+custom_fonts/font = SubResource( 2 )
+text = "Kembali ke Menu Utama"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="." to="." method="_on_backToMenuButton_pressed"]
+
+

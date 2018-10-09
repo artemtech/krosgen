@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://assets/levels/level3/seed/seed_00.png" type="Texture" id=1]
+[ext_resource path="res://assets/levels/level3/seed/seed_01.png" type="Texture" id=2]
+[ext_resource path="res://assets/levels/level3/seed/seed_02.png" type="Texture" id=3]
+[ext_resource path="res://assets/levels/level3/seed/seed_03.png" type="Texture" id=4]
+[ext_resource path="res://assets/levels/level3/seed/seed_04.png" type="Texture" id=5]
+[ext_resource path="res://assets/levels/level3/seed/seed_05.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 47.3997
+
+[sub_resource type="GDScript" id=2]
+
+resource/name = "bibit"
+script/source = "extends Area2D
+var shooting = false;
+var picked = false;
+var defaultPosition = Vector2();
+var target = Vector2();
+onready var sprites = get_node(\"Sprite\")
+var bibit_counts = 5
+
+func _ready():
+	sprites.set_frame(bibit_counts - 1)
+	defaultPosition = get_pos();
+	set_process_input(true);
+	set_fixed_process(true);
+
+func _input(event):
+	if picked:
+		if event.type == InputEvent.MOUSE_MOTION:
+			var pos = event.pos;
+			set_pos(pos);
+		elif event.type==InputEvent.MOUSE_BUTTON:
+			if event.pressed and event.button_index==BUTTON_LEFT:
+				target=event.global_pos;
+				if bibit_counts > 0:
+					bibit_counts -= 1
+					sprites.set_frame(bibit_counts - 1)
+				else:
+					picked = false
+					break
+#				shooting=true
+			elif event.pressed and event.button_index==BUTTON_RIGHT:
+				picked = false
+				set_pos(defaultPosition)
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+
+
+func _on_input_event( viewport, event, shape_idx ):
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			picked = true;
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
+
+"
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="bibit" type="Area2D"]
+
+transform/pos = Vector2( 940, 620 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.27203, 13.6324 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 4.37811, 15.1793 )
+transform/scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 3 )
+animation = "default"
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -1.27203, 13.6324 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+
+

@@ -1,0 +1,47 @@
+extends Area2D
+var shooting = false;
+var picked = false;
+var defaultPosition = Vector2();
+var target = Vector2();
+var on_tanaman = false
+
+func _ready():
+	defaultPosition = get_pos();
+	set_process_input(true);
+
+func _input(event):
+	if picked:
+		if event.type == InputEvent.MOUSE_MOTION:
+			var pos = event.pos;
+			set_pos(pos);
+		elif event.type==InputEvent.MOUSE_BUTTON:
+			if event.pressed and event.button_index==BUTTON_LEFT:
+				target=event.global_pos;
+				get_node("Sprite/AnimationPlayer").play("palu_action")
+				call_deferred("update_shoot",true)
+				if !get_overlapping_bodies().empty():
+					for node in get_overlapping_bodies():
+						if node.is_in_group("musuh"):
+							node.kill()
+					pass
+			elif event.pressed and event.button_index==BUTTON_RIGHT:
+				picked = false
+				set_pos(defaultPosition)
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+
+func update_shoot(status):
+	self.shooting = status
+
+func get_shooting():
+	return self.shooting
+	
+func set_on_tanaman(status):
+	self.on_tanaman = status
+	print(on_tanaman)
+
+func _on_input_event( viewport, event, shape_idx ):
+	if event.type == InputEvent.MOUSE_BUTTON:
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			picked = true;
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
+
